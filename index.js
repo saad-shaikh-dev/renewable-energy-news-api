@@ -83,9 +83,6 @@ app.get("/news/:newsSourceId", (req, res) => {
     const newsSourceAddress = newsSources.filter(
         newsSource => newsSource.name == newsSourceId
     )[0].url;
-    /*   const newsSourceBase = newsSources.filter(
-           newsSource => newsSource.name == newsSourceId
-       )[0].base;*/
     axios
         .get(newsSourceAddress)
         .then(response => {
