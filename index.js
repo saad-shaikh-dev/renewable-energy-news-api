@@ -1,7 +1,7 @@
-const port = process.env.PORT || 5006;
 const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const port = process.env.PORT || 5006;
 
 const newsSources = [
     {
