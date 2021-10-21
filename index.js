@@ -51,9 +51,9 @@ const newsSources = [
     }
 ];
 
-const app = express();
+const news = [];
 
-const articles = [];
+const app = express();
 
 app.get("/", (action, reaction) => {
     reaction.json(`Hi, my name is Saad Shaikh and this is the climate change news API. Go to the link 'https://climate-change-feed-api.herokuapp.com/news' to get your news updates`);
@@ -70,12 +70,12 @@ app.get("/news", (action, reaction) => {
                     const title = $(this).text();
                     const url = $(this).attr("href");
                     const link = () => url.startsWith("/") ? newsSource.domain + url : url
-                    articles.push({ title, url: link(), source: newsSource.name });
+                    news.push({ title, url: link(), source: newsSource.name });
                 });
             })
             .catch(err => console.log(err))
     );
-    reaction.json(articles);
+    reaction.json(news);
 });
 
 app.get("/news/:newsSourceId", (req, res) => {
